@@ -5,11 +5,12 @@ import Paging from "./Paging";
 class Movie extends Component {
     state = {
         pageSize: 5,
-        count: this.props.movies.length
+        count: this.props.movies.length,
+        currentPage: 1
     };
 
     handlePageChange = (page) => {
-        console.log('Page ' + page);
+        this.setState({currentPage: page});
     };
 
     render() {
@@ -46,7 +47,7 @@ class Movie extends Component {
                     </tbody>
                 </table>
                 <Paging itemCount={this.state.count} pageSize={this.state.pageSize}
-                        onPageChange={this.handlePageChange}/>
+                        onPageChange={this.handlePageChange} currentPage={this.state.currentPage}/>
             </div>
         );
     }
