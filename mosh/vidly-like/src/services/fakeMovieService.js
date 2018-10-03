@@ -37,7 +37,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd47181a",
         title: "Airplane",
-        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Action"},
         numberInStock: 7,
         dailyRentalRate: 3.5,
         like: false
@@ -110,7 +110,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd47181a",
         title: "Airplane",
-        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Thriller"},
         numberInStock: 7,
         dailyRentalRate: 3.5,
         like: false
@@ -118,7 +118,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd47181b",
         title: "Wedding Crashers",
-        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Thriller"},
         numberInStock: 7,
         dailyRentalRate: 3.5,
         like: false
@@ -142,7 +142,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd471821",
         title: "The Avengers",
-        genre: {_id: "5b21ca3eeb7f6fbccd471818", name: "Action"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471818", name: "Thriller"},
         numberInStock: 7,
         dailyRentalRate: 3.5,
         like: false

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Like from './Like';
 import Paging from "./Paging";
 
+import {paginate} from '../utils/Paginate'
+
 class Movie extends Component {
     state = {
         pageSize: 5,
@@ -14,6 +16,8 @@ class Movie extends Component {
     };
 
     render() {
+        let {pageSize, currentPage, count} = this.state;
+        let moviess = paginate(this.props.movies, currentPage, pageSize);
         return (
             <div>
                 <table className="table">
@@ -28,7 +32,7 @@ class Movie extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.props.movies.map((movie, key) =>
+                    {moviess.map((movie, key) =>
                         <tr key={key}>
                             <td>{movie.title}</td>
                             <td>{movie.genre.name}</td>
@@ -46,8 +50,10 @@ class Movie extends Component {
                     )}
                     </tbody>
                 </table>
-                <Paging itemCount={this.state.count} pageSize={this.state.pageSize}
-                        onPageChange={this.handlePageChange} currentPage={this.state.currentPage}/>
+                <Paging itemCount={count}
+                        pageSize={pageSize}
+                        onPageChange={this.handlePageChange}
+                        currentPage={currentPage}/>
             </div>
         );
     }

@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types'
+
 
 class Paging extends Component {
 
     render() {
         let {itemCount, pageSize, onPageChange, currentPage} = this.props;
         let pageCount = Math.ceil(itemCount / pageSize);
-        if (pageCount === 1) return null;
+
+        if (pageCount === 1 || itemCount === 0) return null;
         const pages = _.range(1, pageCount + 1);
         return (
             <div>
@@ -23,5 +26,12 @@ class Paging extends Component {
         );
     }
 }
+
+Paging.propTypes = {
+    itemCount: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+    currentPage: PropTypes.number.isRequired
+};
 
 export default Paging;
