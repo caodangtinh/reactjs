@@ -28,18 +28,14 @@ class App extends Component {
     };
 
     handleFilter = (genre) => {
-        console.log(genre);
         let copyMovies = getMovies();
         if ('all' === genre) {
-            console.log('set all data');
-            console.log(copyMovies);
             this.setState({movies: copyMovies});
         } else {
-            console.log('set filter ' + genre);
             const filter = copyMovies.filter(m => m.genre.name === genre);
-            console.log(filter);
             this.setState({movies: filter});
         }
+        console.log(this.state.movies);
 
     };
 
@@ -49,14 +45,21 @@ class App extends Component {
     }
 
     render() {
+        console.log('Passing movie ' + this.state.movies.length);
         return (
-            <main role="main" className="container">
-                <div>
-                    <NavBar showingMsg={this.getShowingMessage()}/>
-                    <Movie movies={this.state.movies} onDelete={this.handleDelete} onLike={this.handleLike}/>
-                    <LeftMenu items={this.state.genres} onFilter={this.handleFilter}/>
+            <div>
+                <NavBar showingMsg={this.getShowingMessage()}/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm">
+                            <LeftMenu items={this.state.genres} onFilter={this.handleFilter}/>
+                        </div>
+                        <div className="col-sm">
+                            <Movie movies={this.state.movies} onDelete={this.handleDelete} onLike={this.handleLike}/>
+                        </div>
+                    </div>
                 </div>
-            </main>
+            </div>
         );
     }
 }

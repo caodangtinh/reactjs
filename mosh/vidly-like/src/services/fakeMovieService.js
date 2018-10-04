@@ -4,7 +4,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd471815",
         title: "Terminator",
-        genre: {_id: "5b21ca3eeb7f6fbccd471818", name: "Action"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471818", name: "Thriller"},
         numberInStock: 6,
         dailyRentalRate: 2.5,
         publishDate: "2018-01-03T19:04:28.809Z",
@@ -13,7 +13,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd471816",
         title: "Die Hard",
-        genre: {_id: "5b21ca3eeb7f6fbccd471818", name: "Action"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471818", name: "Thriller"},
         numberInStock: 5,
         dailyRentalRate: 2.5,
         like: false
@@ -37,7 +37,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd47181a",
         title: "Airplane",
-        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Action"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Thriller"},
         numberInStock: 7,
         dailyRentalRate: 3.5,
         like: false

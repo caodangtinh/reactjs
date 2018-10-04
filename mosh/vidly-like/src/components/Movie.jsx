@@ -7,7 +7,6 @@ import {paginate} from '../utils/Paginate'
 class Movie extends Component {
     state = {
         pageSize: 5,
-        count: this.props.movies.length,
         currentPage: 1
     };
 
@@ -16,7 +15,7 @@ class Movie extends Component {
     };
 
     render() {
-        let {pageSize, currentPage, count} = this.state;
+        let {pageSize, currentPage} = this.state;
         let moviess = paginate(this.props.movies, currentPage, pageSize);
         return (
             <div>
@@ -50,7 +49,7 @@ class Movie extends Component {
                     )}
                     </tbody>
                 </table>
-                <Paging itemCount={count}
+                <Paging itemCount={this.props.movies.length}
                         pageSize={pageSize}
                         onPageChange={this.handlePageChange}
                         currentPage={currentPage}/>
