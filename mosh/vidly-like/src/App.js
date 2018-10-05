@@ -10,9 +10,14 @@ import {getGenres} from './services/fakeGenreService'
 class App extends Component {
 
     state = {
-        movies: getMovies(),
-        genres: getGenres(),
-        currentSelectValue: 'all'
+        movies: [],
+        genres: [],
+        currentSelectValue: '',
+        currentPage: 1
+    };
+
+    componentDidMount() {
+        this.setState({movies: getMovies(), genres: getGenres(), currentSelectValue: 'all'})
     };
 
     handleDelete = (id) => {
@@ -37,8 +42,10 @@ class App extends Component {
             this.setState({movies: filter});
         }
         this.setState({currentSelectValue: genre});
+        this.setState({currentPage: 1});
 
     };
+
 
     getShowingMessage() {
         let {length} = this.state.movies;
@@ -56,7 +63,9 @@ class App extends Component {
                         </div>
                         <div className="col">
                             <NavBar showingMsg={this.getShowingMessage()}/>
-                            <Movie movies={this.state.movies} onDelete={this.handleDelete} onLike={this.handleLike}/>
+                            <Movie currentPage={this.state.currentPage} movies={this.state.movies}
+                                   onDelete={this.handleDelete}
+                                   onLike={this.handleLike}/>
                         </div>
                     </div>
                 </div>
