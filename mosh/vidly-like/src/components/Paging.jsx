@@ -7,14 +7,10 @@ class Paging extends Component {
 
     render() {
         let {itemCount, pageSize, onPageChange, currentPage} = this.props;
-        console.log('itemCount ' + itemCount);
-        console.log('pageSize ' + pageSize);
-        console.log('currentPage ' + currentPage);
         let pageCount = Math.ceil(itemCount / pageSize);
 
         if (pageCount === 1 || itemCount === 0) return null;
         const pages = _.range(1, pageCount + 1);
-        console.log(pages);
         return (
             <div>
                 <nav>

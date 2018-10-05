@@ -6,11 +6,13 @@ class LeftMenu extends Component {
         return (
             <div>
                 <ul className="list-group">
-                    <li className="list-group-item" onClick={() => this.props.onFilter('all')}>All Movie</li>
+                    <li className={this.props.currentFilter === 'all' ? 'list-group-item active' : 'list-group-item '}
+                        onClick={() => this.props.onFilter('all')}>All Movie
+                    </li>
                     {items.map((item, key) =>
                         <li onClick={() => this.props.onFilter(item.name)}
                             key={key}
-                            className="list-group-item">{item.name}</li>
+                            className={this.props.currentFilter === item.name ? 'list-group-item active' : 'list-group-item '}>{item.name}</li>
                     )}
                 </ul>
             </div>

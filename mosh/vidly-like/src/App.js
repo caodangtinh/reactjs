@@ -11,7 +11,8 @@ class App extends Component {
 
     state = {
         movies: getMovies(),
-        genres: getGenres()
+        genres: getGenres(),
+        currentSelectValue: 'all'
     };
 
     handleDelete = (id) => {
@@ -35,7 +36,7 @@ class App extends Component {
             const filter = copyMovies.filter(m => m.genre.name === genre);
             this.setState({movies: filter});
         }
-        console.log(this.state.movies);
+        this.setState({currentSelectValue: genre});
 
     };
 
@@ -45,16 +46,16 @@ class App extends Component {
     }
 
     render() {
-        console.log('Passing movie ' + this.state.movies.length);
         return (
             <div>
-                <NavBar showingMsg={this.getShowingMessage()}/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm">
-                            <LeftMenu items={this.state.genres} onFilter={this.handleFilter}/>
+                        <div className="col-2">
+                            <LeftMenu items={this.state.genres} onFilter={this.handleFilter}
+                                      currentFilter={this.state.currentSelectValue}/>
                         </div>
-                        <div className="col-sm">
+                        <div className="col">
+                            <NavBar showingMsg={this.getShowingMessage()}/>
                             <Movie movies={this.state.movies} onDelete={this.handleDelete} onLike={this.handleLike}/>
                         </div>
                     </div>
