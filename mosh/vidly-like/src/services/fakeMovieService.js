@@ -21,7 +21,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd471817",
         title: "Get Out",
-        genre: {_id: "5b21ca3eeb7f6fbccd471820", name: "Thriller"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471820", name: "Comedy"},
         numberInStock: 8,
         dailyRentalRate: 3.5,
         like: false
@@ -37,7 +37,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd47181a",
         title: "Airplane",
-        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Thriller"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
         numberInStock: 7,
         dailyRentalRate: 3.5,
         like: false
@@ -53,7 +53,7 @@ const movies = [
     {
         _id: "5b21ca3eeb7f6fbccd47181e",
         title: "Gone Girl",
-        genre: {_id: "5b21ca3eeb7f6fbccd471820", name: "Thriller"},
+        genre: {_id: "5b21ca3eeb7f6fbccd471820", name: "Action"},
         numberInStock: 7,
         dailyRentalRate: 4.5,
         like: false

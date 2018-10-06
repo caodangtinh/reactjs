@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import './App.css';
-import Movie from './components/Movie';
-import NavBar from './components/NavBar';
-import LeftMenu from './components/LeftMenu'
+import NavBar from './components/common/NavBar';
+import LeftMenu from './components/common/LeftMenu'
+import MovieTable from './components/MovieTable'
 
 import {getMovies} from './services/fakeMovieService';
 import {getGenres} from './services/fakeGenreService'
+import Paging from "./components/common/Paging";
+import {paginate} from "./utils/Paginate";
 
 class App extends Component {
-
     state = {
-        movies: [],
-        genres: [],
-        currentSelectValue: '',
-        currentPage: 1
-    };
-
-    componentDidMount() {
-        this.setState({movies: getMovies(), genres: getGenres(), currentSelectValue: 'all'})
+        movies: getMovies(),
+        genres: getGenres(),
+        currentSelectValue: 'all',
+        currentPage: 1,
+        pageSize: 5
     };
 
     handleDelete = (id) => {
@@ -46,6 +44,10 @@ class App extends Component {
 
     };
 
+    handlePageChange = (page) => {
+        this.setState({currentPage: page});
+    };
+
 
     getShowingMessage() {
         let {length} = this.state.movies;
@@ -53,19 +55,30 @@ class App extends Component {
     }
 
     render() {
+        let {movies: oMovie, currentPage, pageSize} = this.state;
+        let pagingMovies = paginate(oMovie, currentPage, pageSize);
+        console.log(pagingMovies);
         return (
             <div>
                 <div className="container">
                     <div className="row">
+                        {/*Left menu*/}
                         <div className="col-2">
                             <LeftMenu items={this.state.genres} onFilter={this.handleFilter}
                                       currentFilter={this.state.currentSelectValue}/>
                         </div>
+
+                        {/*main content*/}
                         <div className="col">
                             <NavBar showingMsg={this.getShowingMessage()}/>
-                            <Movie currentPage={this.state.currentPage} movies={this.state.movies}
-                                   onDelete={this.handleDelete}
-                                   onLike={this.handleLike}/>
+
+                            <MovieTable onDelete={this.handleDelete} onLike={this.handleLike} movies={pagingMovies}/>
+
+                            <Paging itemCount={oMovie.length}
+                                    pageSize={pageSize}
+                                    onPageChange={this.handlePageChange}
+                                    currentPage={currentPage}/>
+
                         </div>
                     </div>
                 </div>
