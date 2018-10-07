@@ -12,8 +12,8 @@ class MovieTable extends Component {
                         <th scope="col" onClick={() => this.props.onSort("genre.name")}>Genre</th>
                         <th scope="col" onClick={() => this.props.onSort("numberInStock")}>Stock</th>
                         <th scope="col" onClick={() => this.props.onSort("dailyRentalRate")}>Rate</th>
-                        <th scope="col" onClick={() => this.props.onSort("")}>Like/Dislike</th>
-                        <th scope="col" onClick={() => this.props.onSort("")}>Delete</th>
+                        <th scope="col">Like/Dislike</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>

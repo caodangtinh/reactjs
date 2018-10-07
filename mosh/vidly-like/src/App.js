@@ -8,6 +8,7 @@ import {getMovies} from './services/fakeMovieService';
 import {getGenres} from './services/fakeGenreService'
 import Paging from "./components/common/Paging";
 import {paginate} from "./utils/Paginate";
+import _ from 'lodash'
 
 class App extends Component {
     state = {
@@ -15,7 +16,8 @@ class App extends Component {
         genres: getGenres(),
         currentSelectValue: 'all',
         currentPage: 1,
-        pageSize: 5
+        pageSize: 5,
+        sortColumn: {path: 'title', order: 'asc'}
     };
 
     handleDelete = (id) => {
@@ -48,8 +50,12 @@ class App extends Component {
         this.setState({currentPage: page});
     };
 
-    handleSort = (sortColumn) => {
-        console.log(sortColumn);
+    handleSort = (path) => {
+        if ((path === this.state.sortColumn.path) && ('asc' === this.state.sortColumn.order)) {
+            this.setState({sortColumn: {path, order: 'desc'}});
+        } else {
+            this.setState({sortColumn: {path, order: 'asc'}});
+        }
     };
 
 
@@ -59,8 +65,9 @@ class App extends Component {
     }
 
     render() {
-        let {movies: oMovie, currentPage, pageSize} = this.state;
-        let pagingMovies = paginate(oMovie, currentPage, pageSize);
+        let {movies: oMovie, currentPage, pageSize, sortColumn} = this.state;
+        let sortedMovies = _.orderBy(oMovie, [sortColumn.path], [sortColumn.order]);
+        let pagingMovies = paginate(sortedMovies, currentPage, pageSize);
         return (
             <div>
                 <div className="container">
