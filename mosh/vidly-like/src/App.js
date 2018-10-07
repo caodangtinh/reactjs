@@ -48,6 +48,10 @@ class App extends Component {
         this.setState({currentPage: page});
     };
 
+    handleSort = (sortColumn) => {
+        console.log(sortColumn);
+    };
+
 
     getShowingMessage() {
         let {length} = this.state.movies;
@@ -57,7 +61,6 @@ class App extends Component {
     render() {
         let {movies: oMovie, currentPage, pageSize} = this.state;
         let pagingMovies = paginate(oMovie, currentPage, pageSize);
-        console.log(pagingMovies);
         return (
             <div>
                 <div className="container">
@@ -72,7 +75,10 @@ class App extends Component {
                         <div className="col">
                             <NavBar showingMsg={this.getShowingMessage()}/>
 
-                            <MovieTable onDelete={this.handleDelete} onLike={this.handleLike} movies={pagingMovies}/>
+                            <MovieTable onDelete={this.handleDelete}
+                                        onLike={this.handleLike}
+                                        onSort={this.handleSort}
+                                        movies={pagingMovies}/>
 
                             <Paging itemCount={oMovie.length}
                                     pageSize={pageSize}
