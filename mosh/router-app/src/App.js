@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import NavBar from "./components/navbar";
 import Products from "./components/products";
 import Posts from "./components/posts";
@@ -7,15 +7,19 @@ import Dashboard from "./components/admin/dashboard";
 import ProductDetails from "./components/productDetails";
 import NotFound from "./components/notFound";
 import "./App.css";
+import {Route} from 'react-router-dom';
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <NavBar />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <NavBar/>
+                <div className="content">
+                    <Route path="" />
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
